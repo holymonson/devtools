@@ -70,7 +70,7 @@ usage() {
 	echo '           This is useful for rebuilds without dirtying the pristine'
 	echo '           chroot'
 	echo '-r <dir>   The chroot dir to use'
-	echo '-I <pkg>   Install a package into the working copy of the chroot'
+	echo '-I <pkgs>  Install packages into the working copy of the chroot'
 	echo '-l <copy>  The directory to use as the working copy of the chroot'
 	echo '           Useful for maintaining multiple copies'
 	echo "           Default: $copy"
@@ -280,7 +280,7 @@ while getopts 'hcur:I:l:nCTD:d:U:' arg; do
 		d) bindmounts_rw+=("--bind=$OPTARG") ;;
 		u) update_first=1 ;;
 		r) passeddir="$OPTARG" ;;
-		I) install_pkgs+=("$OPTARG") ;;
+		I) install_pkgs+=($OPTARG) ;;
 		l) copy="$OPTARG" ;;
 		n) run_namcap=1; makepkg_args+=(--install) ;;
 		C) run_checkpkg=1 ;;

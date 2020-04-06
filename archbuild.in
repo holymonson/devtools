@@ -34,7 +34,7 @@ usage() {
 	echo '    -h         This help'
 	echo '    -c         Recreate the chroot before building'
 	echo '    -r <dir>   Create chroots in this directory'
-	echo '    -I <pkgs>  Install extra packages'
+	echo '    -I <pkgs>  Install extra packages on recreating chroot'
 	echo '    -s         Do not run setarch'
 	echo ''
 	echo "Default makechrootpkg args: ${makechrootpkg_args[*]}"
