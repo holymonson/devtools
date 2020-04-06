@@ -35,6 +35,7 @@ usage() {
 	echo '    -c         Recreate the chroot before building'
 	echo '    -r <dir>   Create chroots in this directory'
 	echo '    -I <pkgs>  Install extra packages'
+	echo '    -s         Do not run setarch'
 	echo ''
 	echo "Default makechrootpkg args: ${makechrootpkg_args[*]}"
 	echo "Default packages: ${base_packages[*]}"
@@ -42,11 +43,12 @@ usage() {
 	exit 1
 }
 
-while getopts 'hcr:I:' arg; do
+while getopts 'hcr:I:s' arg; do
 	case "${arg}" in
 		c) clean_first=true ;;
 		r) chroots="$OPTARG" ;;
 		I) base_packages+=($OPTARG) ;;
+		s) nosetarch_opt="-s" ;;
 		*) usage ;;
 	esac
 done
